@@ -1,3 +1,71 @@
 .header{
-    background-color: aqua;
+    background-color: transparent;
+    display: flex;
+    padding: 10px;
+    z-index: 99999;
+    position: fixed;
+    width: 100vw;
+}
+.header-left-container{
+    width: 50vw;
+    margin-left: 50px;
+}
+.header-right-container{
+    width: 50vw;
+}
+.header-left-container h1{
+    font-size: 30px;
+    width: fit-content;
+}
+.header-right-wrapper{
+    height: 100%;
+}
+.header-right-wrapper ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100%;
+}
+.header-right-wrapper ul li{
+    padding: 5px 0px;
+}
+.header-right-wrapper ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+.header-right-wrapper .signin-button{
+    color: white;
+    border-radius: 20px;
+    padding: 4px 20px 6px 20px;
+    background: linear-gradient(to right, rgb(85, 85, 250),rgb(46, 46, 250));
+}
+.menu-bar{
+    display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    .header-left-container{
+        width: 40vw;
+    }
+    .header-right-container{
+        width: 60vw;
+    }
+}
+@media only screen and (max-width: 740px) {
+    .header-right-container{
+        display: none;
+    }
+    .menu-bar{
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 50vw;
+        margin-right: 45px;
+        font-size: 22px;
+    }
+    .header-left-container{
+        margin-left: 20px;
+    }
 }
