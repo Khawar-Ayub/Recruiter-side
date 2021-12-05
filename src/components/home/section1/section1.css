@@ -1,39 +1,39 @@
-.main{
+.section1{
     display: flex;
     position: relative;
 }
-.main-left-container{
+.section1-left-container{
     width: 32%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
-.main-left-wrapper{
+.section1-left-wrapper{
     position: absolute;
     left: 10%;
     top: 23%;
     z-index: 9;
 }
-.main-right-container{
+.section1-right-container{
     width: 100%;
 }
-.main-right-container img{
+.section1-right-container img{
     width: 100%;
     z-index: -1;
 }
-.main-left-wrapper p{
+.section1-left-wrapper p{
     margin: 30px 0px;
     font-size: 18px;
 }
-.main-left-wrapper{
+.section1-left-wrapper{
     display: flex;
     flex-direction: column;
 }
-.main-search-bar{
+.section1-search-bar{
     width: 95%;
     position: relative;
 }
-.main-search-bar a{
+.section1-search-bar a{
     color: #fff;
     text-decoration: none;
     padding: 8px 25px 10px 25px;
@@ -44,7 +44,7 @@
     top: 5px;
     right: 0;
 }
-.main-search-bar #search{
+.section1-search-bar #search{
     width: 95%;
     height: 50px;
     border-radius: 30px;
@@ -59,7 +59,7 @@
 
 
 .bubbleImage-container{
-    transform: translateX(-176px);
+    transform: translateX(-220px);
     z-index: 1;
     opacity: 0.8;
 }
@@ -70,19 +70,19 @@
     }
 }
 @media only screen and (max-width: 1000px) {
-    .main-right-container{
+    .section1-right-container{
         display: none;
     }
-    .main-left-box{
+    .section1-left-box{
         display: flex;
         justify-content: center;
         align-items: center;
         height: 85vh;
     }
-    .main-left-container{
+    .section1-left-container{
         width: 100%;
     }
-    .main-left-wrapper{
+    .section1-left-wrapper{
         position: unset;
         padding: 0px 20px;
     }
