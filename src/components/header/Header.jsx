@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './header.css'
 import { CgMenuRight } from "react-icons/cg";
+import logo from "../../images/logo.png"
 
 export default function Header() {
+    const [header, setHeader] = useState("header");
+    const listenScrollEvent = () => {
+        window.scrollY > 10
+          ? setHeader("header2")
+          : setHeader("header");
+      }
+    // Similar to componentDidMount and componentDidUpdate:
+    useEffect(() => {
+      window.addEventListener("scroll", listenScrollEvent)
+      return () =>
+        window.removeEventListener('scroll', listenScrollEvent);
+    },[])
     return (
-        <div className="header">
+        <div className={header}>
             <div className="header-left-container">
-                <h1>WeHire</h1>
+                <img src={logo} alt="WeHire" />
             </div>
             <div className="header-right-container">
                 <div className="header-right-wrapper">

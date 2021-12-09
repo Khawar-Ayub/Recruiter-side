@@ -5,10 +5,25 @@
     z-index: 99999;
     position: fixed;
     width: 100vw;
+    transition: 0.5s;
+}
+.header2{
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    padding: 10px;
+    z-index: 99999;
+    position: fixed;
+    width: 100vw;
+    transition: 0.3s;
+    box-shadow: 0px 0px 10px #000;
 }
 .header-left-container{
     width: 50vw;
     margin-left: 50px;
+}
+.header-left-container img{
+    max-width: 100px;
+    padding-top: 6px;
 }
 .header-right-container{
     width: 50vw;

@@ -11,7 +11,11 @@ export default function Section2() {
                 </div>
                 <div className="section2-right-container">
                     <div className="section2-right-wrapper">
-                        <h2></h2>
+                        <h2>Find your passion and<br/> achieve success</h2>
+                        <p>Find a job that suits your interests and talents.<br/>
+                            A high Salary is not the top priority.
+                            Most importantly,<br/> you can work according to your heart's desire.
+                        </p>
                     </div>
                 </div>
             </div>
