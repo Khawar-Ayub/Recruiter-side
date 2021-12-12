@@ -1,11 +1,12 @@
 .section2{
-    margin-top: -300px;
+    margin-top: -330px;
     margin-bottom: 100px;
 }
 .section2-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 20px;
 }
 .section2-left-container{
     width: 50%;
@@ -50,14 +51,15 @@
     .section2-container{
         flex-direction: column;
     }
-    .section2-left-container{
-        width: 80%;
+    .section2-left-container img{
+        width: 230px;
     }
     .section2-right-container{
         width: 100%;
     }
     .section2-right-wrapper{
         width: fit-content;
+        padding: 20px;
     }
 
 }

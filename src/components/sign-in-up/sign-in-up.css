@@ -1,0 +1,195 @@
+.sign-in,
+.sign-up {
+  display: flex;
+  height: 100vh;
+}
+.sign-in-right-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign-up-right-container {
+  width: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.sign-in-right-wrapper img,
+.sign-up-right-wrapper img {
+  width: 100%;
+}
+.sign-in-left-container,
+.sign-up-left-container {
+  width: 50%;
+  padding: 0px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign-in-left-wrapper {
+  width: 490px;
+  margin-top: 20px;
+}
+.sign-up-left-wrapper {
+  width: 490px;
+  margin-top: 60px;
+}
+.sign-in-left-wrapper p{
+  color: gray;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 15px 0px 40px 0px;
+}
+.sign-up-left-wrapper p{
+  color: gray;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0px 30px 0px;
+}
+.google-sign-in .FcGoogle {
+  font-size: 25px;
+  margin-right: 10px;
+}
+.google-sign-in a {
+  text-decoration: none;
+  color: rgb(50, 50, 50);
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 0px;
+  border: 1px solid lightgray;
+  border-radius: 30px;
+}
+.sign-in-left-wrapper h3{
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+  line-height: 0.1em;
+  margin: 40px 0 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: lightgray;
+}
+.sign-up-left-wrapper h3{
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+  line-height: 0.1em;
+  margin: 30px 0 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: lightgray;
+}
+.sign-in-left-wrapper h3 span,
+.sign-up-left-wrapper h3 span {
+  background: #fff;
+  padding: 0 10px;
+}
+.sign-in-left-wrapper .form-label,
+.sign-up-left-wrapper .form-label {
+  font-size: 16px;
+  font-weight: 500;
+}
+.sign-in-left-wrapper .form-label span,
+.sign-up-left-wrapper .form-label span {
+  color: #4c859d;
+}
+.sign-in-left-wrapper #email,
+.sign-up-left-wrapper #email {
+  width: 100%;
+  outline: none;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid lightgray;
+  font-size: 15px;
+  margin: 5px 0px 15px 0px;
+}
+.sign-in-left-wrapper #password,
+.sign-up-left-wrapper #password {
+  width: 100%;
+  outline: none;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid lightgray;
+  font-size: 15px;
+  box-sizing: border-box;
+  margin: 5px 0px 15px 0px;
+}
+.sign-up-left-wrapper #confirm-password {
+  width: 100%;
+  outline: none;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid lightgray;
+  font-size: 15px;
+  box-sizing: border-box;
+  margin: 5px 0px 15px 0px;
+}
+.sign-in-left-wrapper #login-submit,
+.sign-up-left-wrapper #signup-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 30px;
+  padding: 15px 0px;
+  margin: 25px 0px 15px 0px;
+  font-size: 16px;
+  background: linear-gradient(to right, #3e9bc3, #4c859d);
+}
+.sign-in-left-wrapper #login-submit:hover,
+.sign-up-left-wrapper #signup-submit:hover {
+  background: linear-gradient(to right, #4c859d, #3e9bc3);
+}
+
+.remember-forgot a {
+  float: right;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2c6f8b;
+}
+.sign-in-left-wrapper .remember-me-checkbox,
+.sign-up-left-wrapper .terms-checkbox {
+  font-size: 15px;
+  font-weight: 500;
+  float: left;
+}
+.sign-in-left-wrapper .remember-me-checkbox input,
+.sign-up-left-wrapper .terms-checkbox input {
+  margin-right: 10px;
+}
+
+.sign-in-left-wrapper .not-registered,
+.sign-up-left-wrapper .already-registered {
+  color: unset;
+  margin: 15px 0px 10px 0px;
+}
+.sign-in-left-wrapper .not-registered a,
+.sign-up-left-wrapper .already-registered a {
+  text-decoration: none;
+  color: #2c6f8b;
+}
+
+@media only screen and (max-width: 1000px) {
+  .sign-in,
+  .sign-up {
+    flex-direction: column;
+  }
+  .sign-in-left-container,
+  .sign-up-left-container {
+    width: 100%;
+    margin-top: 70px;
+    padding: 0px 20px;
+  }
+  .sign-in-right-container,
+  .sign-up-right-container {
+    width: 100%;
+  }
+  .sign-up-left-wrapper {
+    margin-top: 20px;
+  }
+}

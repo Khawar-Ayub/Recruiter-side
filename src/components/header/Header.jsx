@@ -32,10 +32,10 @@ export default function Header() {
                             <Link to="/jobs">Jobs</Link>
                         </li>
                         <li>
-                            <Link to="/register">Join Now</Link>
+                            <Link to="/signup">Join Now</Link>
                         </li>
                         <li>
-                            <Link to="#" className="signin-button">Sign In</Link>
+                            <Link to="/signin" className="signin-button">Sign In</Link>
                         </li>
                     </ul>
                 </div>
