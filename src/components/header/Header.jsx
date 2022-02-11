@@ -11,7 +11,7 @@ export default function Header() {
           ? setHeader("header2")
           : setHeader("header");
       }
-    // Similar to componentDidMount and componentDidUpdate:
+    
     useEffect(() => {
       window.addEventListener("scroll", listenScrollEvent)
       return () =>
