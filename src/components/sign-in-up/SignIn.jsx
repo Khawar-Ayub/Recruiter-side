@@ -8,7 +8,6 @@ import "./sign-in-up.css";
 
 export default function SignIn() {
   var [error, seterror] = useState();
-  var [message, setmessage] = useState();
   const navigate = useNavigate();
   const {
     register,
@@ -21,7 +20,7 @@ export default function SignIn() {
       .post(`http://localhost:5000/user/login`, data)
       .then((res) => {
         if (res.status === 200) {
-          setmessage(res.data.message);
+          console.log(res.data.email);
           navigate("/");
         } else {
           seterror(res.data.message);
