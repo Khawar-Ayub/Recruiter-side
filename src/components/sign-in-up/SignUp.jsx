@@ -6,6 +6,7 @@ import { BsCheckCircle } from "react-icons/bs";
 import axios from "axios";
 import SignupImage from "../../images/signupImage.svg";
 import "./sign-in-up.css";
+import Header from "../header/Header";
 
 export default function SignUp() {
   var [error, seterror] = useState();
@@ -16,12 +17,13 @@ export default function SignUp() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
   const onSubmit = async (data) => {
     seterror(null);
     if (data.password !== data.confirmPassword) {
       seterror("Password and Confirm Password does not match");
     } else {
-      const response = await axios
+      await axios
         .post(`http://localhost:5000/user/register`, data)
         .then((res) => {
           if (res.status === 201) {
@@ -46,6 +48,7 @@ export default function SignUp() {
 
   return (
     <div className="sign-up">
+      <Header/>
       {message && (
         <div className="success-message">
           <div className="success-message-container">
@@ -146,7 +149,7 @@ export default function SignUp() {
       </div>
       <div className="sign-up-right-container">
         <div className="sign-up-right-wrapper">
-          <img src={SignupImage} alt="signup-image" />
+          <img src={SignupImage} alt="signup" />
         </div>
       </div>
     </div>

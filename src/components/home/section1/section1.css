@@ -48,7 +48,7 @@
     font-size: 17px;
     position: absolute;
     top: 5px;
-    right: 0;
+    right: 28px;
 }
 .section1-search-bar #search{
     width: 95%;
@@ -56,7 +56,7 @@
     border-radius: 30px;
     border: none;
     background-color: white;
-    color: black;
+    color: rgb(114, 114, 114);
     font-size: 17px;
     padding: 0 5px 0 20px;
     outline: none;
@@ -98,5 +98,11 @@
     }
     .bubbleImage-container{
         display: none;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .section1-search-bar a{
+        font-size: 16px;
+        right: 22px;
     }
 }
