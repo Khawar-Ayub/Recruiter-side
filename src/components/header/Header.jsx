@@ -111,7 +111,9 @@ export default function Header(props) {
                   />
                 </div>
                 <ul id={dropdown ? "header-dropdown" : ""}>
-                  <li>Update Profile</li>
+                  <li>
+                    <Link to="/updateProfile">Update Profile</Link>
+                  </li>
                   <li onClick={handleLogout}>Logout</li>
                 </ul>
               </div>

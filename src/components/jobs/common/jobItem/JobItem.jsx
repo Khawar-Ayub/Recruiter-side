@@ -14,21 +14,21 @@ export default function JobItem(props) {
           </div>
           <div className="job-info">
             <h1>{props.jobTitle}</h1>
-            <h2>TechFlickers</h2>
-            <h2>Islamabad, Pakistan</h2>
+            <h2>{props.companyName}</h2>
+            <h2>{props.location}</h2>
           </div>
         </div>
 
         <div className="job-item-details-bottom">
           <div className="job-item-details-bottom-container">
             <div className="job-types">
-              <h2>On-site</h2>
-              <h2>Entry Level</h2>
+              <h2>{props.employeeType}</h2>
+              <h2>{props.workLevel}</h2>
             </div>
             <div className="job-time-applicants">
               <h2 id="applicants">10 Applicants</h2>
               <h2>&#183;</h2>
-              <h2 className="job-days">2d</h2>
+              <h2 className="job-days">{props.postDate}d</h2>
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ import "./jobs.css";
 export default function Jobs() {
   const [error, seterror] = useState();
   const [jobs, setJobs] = useState([]);
+  const [Searchjob, setSearchJob] = useState([]);
   const [jobDetails, setJobDetails] = useState([]);
   const getAllJobs = async () => {
     const response = await axios
@@ -16,6 +17,7 @@ export default function Jobs() {
       .then((res) => {
         if (res.status === 200) {
           setJobs(res.data);
+          setSearchJob(res.data)
           handleJobClick(res.data[0]);
           console.log(res.data);
         } else {
@@ -29,13 +31,48 @@ export default function Jobs() {
   const handleJobClick = (job) => {
     setJobDetails(job);
   };
+  const jobDate = (postDate) => {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    let yyyy = today.getFullYear();
+    today = yyyy + "-" + mm + "-" + dd;
+    //extracting date from postDate
+    if (postDate) {
+      let postDateSplit = postDate.split("T");
+      let postDateArray = postDateSplit[0];
+      let postDateArraySplit = postDateArray.split("-");
+      let postDateYear = postDateArraySplit[0];
+      let postDateMonth = postDateArraySplit[1];
+      let postDateDay = postDateArraySplit[2];
+      //subtrackng today's date from postDate
+      let postDateYearSubtract = yyyy - postDateYear;
+      let postDateMonthSubtract = mm - postDateMonth;
+      let postDateDaySubtract = dd - postDateDay;
+      return postDateDaySubtract;
+    }
+  };
+  const handleSearchTitle = (e) => {
+    const searchWord=e.target.value;
+    const newData= jobs.filter((item)=>{
+      return item.jobTitle.toLowerCase().includes(searchWord.toLowerCase());
+    })
+    setSearchJob(newData)
+  };
+  const handleSearchLocation = (e) => {
+    const searchWord=e.target.value;
+    const newData= jobs.filter((item)=>{
+      return item.location.toLowerCase().includes(searchWord.toLowerCase());
+    })
+    setSearchJob(newData)
+  };
   useEffect(() => {
     getAllJobs();
   }, []);
-  
+
   return (
     <>
-      <Header whiteColor={true}/>
+      <Header whiteColor={true} />
       <div className="jobs">
         <div className="jobs-container">
           <div className="jobs-search-bar">
@@ -45,6 +82,7 @@ export default function Jobs() {
                   type="text"
                   id="job-search"
                   placeholder="Job Title, Skills or Company"
+                  onChange={handleSearchTitle}
                 />
               </div>
               <div className="search-by-location">
@@ -52,6 +90,7 @@ export default function Jobs() {
                   type="text"
                   id="location-search"
                   placeholder="City, State or Zip Code"
+                  onChange={handleSearchLocation}
                 />
               </div>
               <button>Search</button>
@@ -61,14 +100,33 @@ export default function Jobs() {
           <div className="jobs-list">
             <div className="jobs-list-container">
               <div className="jobs-list-left">
-                {jobs.map((job,index) => (
-                  <div key={index} onClick={()=>handleJobClick(job)}>
-                    <JobItem jobTitle={job.jobTitle} />
+                {Searchjob.map((job, index) => (
+                  <div key={index} onClick={() => handleJobClick(job)}>
+                    <JobItem
+                      jobTitle={job.jobTitle}
+                      companyName={job.companyName}
+                      location={job.location}
+                      workLevel={job.workLevel}
+                      employeeType={job.employeeType}
+                      postDate={jobDate(job.postDate)}
+                    />
                   </div>
                 ))}
               </div>
               <div className="jobs-list-right">
-                  <JobItemDetails jobTitle={jobDetails.jobTitle} jobDescription={jobDetails.jobDescription}/>
+                <JobItemDetails
+                  jobTitle={jobDetails.jobTitle}
+                  jobDescription={jobDetails.jobDescription}
+                  location={jobDetails.location}
+                  companyName={jobDetails.companyName}
+                  experience={jobDetails.experience}
+                  workLevel={jobDetails.workLevel}
+                  employeeType={jobDetails.employeeType}
+                  totalEmployees={jobDetails.totalEmployees}
+                  CCDate={jobDetails.CCDate}
+                  aboutCompany={jobDetails.aboutCompany}
+                  postDate={jobDate(jobDetails.postDate)}
+                />
               </div>
             </div>
           </div>

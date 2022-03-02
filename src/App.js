@@ -9,6 +9,7 @@ import Home from "./components/home/Home";
 import Jobs from "./components/jobs/Jobs";
 import SignIn from "./components/sign-in-up/SignIn";
 import SignUp from "./components/sign-in-up/SignUp";
+import UpdateProfile from "./components/updateProfile/UpdateProfile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/updateProfile" element={<UpdateProfile />} />
       </Routes>
     </Router>
   );
