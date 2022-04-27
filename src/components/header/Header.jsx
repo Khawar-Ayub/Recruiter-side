@@ -50,8 +50,8 @@ export default function Header(props) {
         }
       })
       .catch((err) => {
-        console.log("err", err.response.data.message);
-        seterror(err.response.data.message);
+        console.log("err", err);
+        seterror(err);
       });
   };
 
@@ -62,10 +62,10 @@ export default function Header(props) {
       },
       withCredentials: true,
     });
-    return await response;
+    return response;
   };
-  const authUser = () => {
-    authUserAPICall()
+  const authUser = async () => {
+    await authUserAPICall()
       .then((res) => {
         if (res.status === 200) {
           dispatch(login({ email: res.data.email, isLoggedIn: true }));
@@ -74,7 +74,7 @@ export default function Header(props) {
         }
       })
       .catch((err) => {
-        console.log("err", err.response.data.message);
+        console.log("err", err);
       });
   };
   return (
@@ -90,6 +90,9 @@ export default function Header(props) {
             </li>
             <li>
               <Link to="/jobs">Jobs</Link>
+            </li>
+            <li>
+              <Link to="/chat">chat</Link>
             </li>
             {user.isLoggedIn ? (
               <div className="header-loggedin">

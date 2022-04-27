@@ -5,8 +5,10 @@ import Header from "../header/Header";
 import JobItem from "./common/jobItem/JobItem";
 import JobItemDetails from "./common/jobItemDetails/JobItemDetails";
 import "./jobs.css";
+import Autocomplete from "react-google-autocomplete";
 
 export default function Jobs() {
+  const apiKey = "AIzaSyCOyRCqXd6qcPVub0azaVmaHs4WcIhiTHA";
   const [error, seterror] = useState();
   const [jobs, setJobs] = useState([]);
   const [Searchjob, setSearchJob] = useState([]);
@@ -17,7 +19,7 @@ export default function Jobs() {
       .then((res) => {
         if (res.status === 200) {
           setJobs(res.data);
-          setSearchJob(res.data)
+          setSearchJob(res.data);
           handleJobClick(res.data[0]);
           console.log(res.data);
         } else {
@@ -25,7 +27,7 @@ export default function Jobs() {
         }
       })
       .catch((err) => {
-        seterror(err.response.data.message);
+        //seterror(err.response.data.message);
       });
   };
   const handleJobClick = (job) => {
@@ -53,18 +55,18 @@ export default function Jobs() {
     }
   };
   const handleSearchTitle = (e) => {
-    const searchWord=e.target.value;
-    const newData= jobs.filter((item)=>{
+    const searchWord = e.target.value;
+    const newData = jobs.filter((item) => {
       return item.jobTitle.toLowerCase().includes(searchWord.toLowerCase());
-    })
-    setSearchJob(newData)
+    });
+    setSearchJob(newData);
   };
   const handleSearchLocation = (e) => {
-    const searchWord=e.target.value;
-    const newData= jobs.filter((item)=>{
+    const searchWord = e.target.value;
+    const newData = jobs.filter((item) => {
       return item.location.toLowerCase().includes(searchWord.toLowerCase());
-    })
-    setSearchJob(newData)
+    });
+    setSearchJob(newData);
   };
   useEffect(() => {
     getAllJobs();
@@ -86,12 +88,35 @@ export default function Jobs() {
                 />
               </div>
               <div className="search-by-location">
-                <input
+                {/* <Autocomplete
+                  id="location-search"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    padding: "2px",
+                    margin: "0px",
+                  }}
+                  onPlaceSelected={(place) => {
+                    console.log(place);
+                  }}
+                  types={["(regions)"]}
+                  componentRestrictions={{ country: "us" }}
+                  onChange={handleSearchLocation}
+                /> */}
+                <Autocomplete
+                  apiKey={apiKey}
+                  id="location-search"
+                  placeholder="City, State or Zip Code"
+                  onPlaceSelected={(place) => {
+                    console.log(place);
+                  }}
+                />
+                {/* <input
                   type="text"
                   id="location-search"
                   placeholder="City, State or Zip Code"
                   onChange={handleSearchLocation}
-                />
+                /> */}
               </div>
               <button>Search</button>
             </div>

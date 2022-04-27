@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import ChatInput from "./components/chat/ChatInput";
 import Home from "./components/home/Home";
 import Jobs from "./components/jobs/Jobs";
 import SignIn from "./components/sign-in-up/SignIn";
@@ -19,6 +16,7 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/chat" element={<ChatInput />} />
         <Route path="/updateProfile" element={<UpdateProfile />} />
       </Routes>
     </Router>

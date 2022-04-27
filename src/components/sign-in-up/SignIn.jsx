@@ -6,10 +6,13 @@ import axios from "axios";
 import LoginImage from "../../images/loginImage.svg";
 import "./sign-in-up.css";
 import Header from "../header/Header";
+import { useDispatch } from "react-redux";
+import { login } from "../../action";
 
 export default function SignIn() {
   const [error, seterror] = useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -21,11 +24,18 @@ export default function SignIn() {
       .post(`http://localhost:5000/user/login`, data, {
         headers: {
           "Content-Type": "application/json",
-          },
-          withCredentials: true,
-          })
+        },
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.status === 200) {
+          dispatch(
+            login({
+              email: res.data.user.email,
+              id: res.data.user.id,
+              isLoggedIn: true,
+            })
+          );
           navigate("/");
         } else {
           seterror(res.data.message);
@@ -38,7 +48,7 @@ export default function SignIn() {
 
   return (
     <div className="sign-in">
-      <Header/>
+      <Header />
       <div className="sign-in-left-container">
         <div className="sign-in-left-wrapper">
           <h2>Login</h2>
