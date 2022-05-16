@@ -28,7 +28,6 @@ export default function Header(props) {
     if (props.whiteColor === true) {
       setHeader("header2");
     }
-    authUser();
     return () => window.removeEventListener("scroll", listenScrollEvent);
   }, []);
 
@@ -55,28 +54,6 @@ export default function Header(props) {
       });
   };
 
-  const authUserAPICall = async () => {
-    const response = await axios.get("http://localhost:5000/user/authUser", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    });
-    return response;
-  };
-  const authUser = async () => {
-    await authUserAPICall()
-      .then((res) => {
-        if (res.status === 200) {
-          dispatch(login({ email: res.data.email, isLoggedIn: true }));
-        } else {
-          console.log("error");
-        }
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
   return (
     <div className={header}>
       <div className="header-left-container">

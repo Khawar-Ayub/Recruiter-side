@@ -20,7 +20,7 @@ export default function SignIn() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const response = await axios
+    await axios
       .post(`http://localhost:5000/user/login`, data, {
         headers: {
           "Content-Type": "application/json",

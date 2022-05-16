@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import "./jobItemDetails.css";
 
 export default function JobItemDetails(props) {
+  const founded = (date) => {
+    const dateSplit = date.split("T");
+    const res = dateSplit[0];
+    return res;
+  };
   return (
     <div className="job-item-details">
       <div className="job-item-details-container">
@@ -58,9 +63,11 @@ export default function JobItemDetails(props) {
             {props.aboutCompany}
             <br />
             <br />
-            <b>Total Employees: </b>{props.totalEmployees}
+            <b>Total Employees: </b>
+            {props.totalEmployees}
             <br />
-            <b>Founded: </b>{props.CCDate}
+            <b>Founded: </b>
+            {founded(props.CCDate)}
           </p>
         </div>
       </div>

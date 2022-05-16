@@ -14,21 +14,14 @@ export default function Jobs() {
   const [Searchjob, setSearchJob] = useState([]);
   const [jobDetails, setJobDetails] = useState([]);
   const getAllJobs = async () => {
-    const response = await axios
-      .get(`http://localhost:5000/recruiter/jobs/alljobs`)
-      .then((res) => {
-        if (res.status === 200) {
-          setJobs(res.data);
-          setSearchJob(res.data);
-          handleJobClick(res.data[0]);
-          console.log(res.data);
-        } else {
-          seterror(res.data.message);
-        }
-      })
-      .catch((err) => {
-        //seterror(err.response.data.message);
-      });
+    const res = await axios.get(`http://localhost:5000/job/viewAllJobs`);
+    if (res.status === 200) {
+      setJobs(res.data.jobs);
+      setSearchJob(res.data.jobs);
+      handleJobClick(res.data.jobs[0]);
+    } else {
+      seterror(res.data.message);
+    }
   };
   const handleJobClick = (job) => {
     setJobDetails(job);
@@ -129,29 +122,33 @@ export default function Jobs() {
                   <div key={index} onClick={() => handleJobClick(job)}>
                     <JobItem
                       jobTitle={job.jobTitle}
-                      companyName={job.companyName}
-                      location={job.location}
+                      companyName={job.recruiter.companyName}
+                      location={job.jobLocation}
                       workLevel={job.workLevel}
-                      employeeType={job.employeeType}
-                      postDate={jobDate(job.postDate)}
+                      employeeType={job.employmentType}
+                      postDate={jobDate(job.createdAt)}
                     />
                   </div>
                 ))}
               </div>
               <div className="jobs-list-right">
-                <JobItemDetails
-                  jobTitle={jobDetails.jobTitle}
-                  jobDescription={jobDetails.jobDescription}
-                  location={jobDetails.location}
-                  companyName={jobDetails.companyName}
-                  experience={jobDetails.experience}
-                  workLevel={jobDetails.workLevel}
-                  employeeType={jobDetails.employeeType}
-                  totalEmployees={jobDetails.totalEmployees}
-                  CCDate={jobDetails.CCDate}
-                  aboutCompany={jobDetails.aboutCompany}
-                  postDate={jobDate(jobDetails.postDate)}
-                />
+                {jobDetails.recruiter ? (
+                  <JobItemDetails
+                    jobTitle={jobDetails.jobTitle}
+                    jobDescription={jobDetails.jobDescription}
+                    location={jobDetails.jobLocation}
+                    companyName={jobDetails.recruiter.companyName}
+                    experience={jobDetails.experienceRequired}
+                    workLevel={jobDetails.workLevel}
+                    employeeType={jobDetails.employmentType}
+                    totalEmployees={jobDetails.recruiter.totalEmployees}
+                    CCDate={jobDetails.recruiter.founded}
+                    aboutCompany={jobDetails.recruiter.companyDescription}
+                    postDate={jobDate(jobDetails.createdAt)}
+                  />
+                ) : (
+                  <div>Loading...</div>
+                )}
               </div>
             </div>
           </div>
