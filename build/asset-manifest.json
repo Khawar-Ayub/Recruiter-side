@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6d72bb5c.chunk.css",
+    "main.js": "/static/js/main.91248981.chunk.js",
+    "main.js.map": "/static/js/main.91248981.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.80f3d3e0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.80f3d3e0.js.map",
+    "static/js/2.6fad25f8.chunk.js": "/static/js/2.6fad25f8.chunk.js",
+    "static/js/2.6fad25f8.chunk.js.map": "/static/js/2.6fad25f8.chunk.js.map",
+    "static/js/3.4d218422.chunk.js": "/static/js/3.4d218422.chunk.js",
+    "static/js/3.4d218422.chunk.js.map": "/static/js/3.4d218422.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5dd61895fcb4b1c637232a8f31ccba0a.js": "/precache-manifest.5dd61895fcb4b1c637232a8f31ccba0a.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.6d72bb5c.chunk.css.map": "/static/css/main.6d72bb5c.chunk.css.map",
+    "static/js/2.6fad25f8.chunk.js.LICENSE.txt": "/static/js/2.6fad25f8.chunk.js.LICENSE.txt",
+    "static/media/avatar.jpg": "/static/media/avatar.768d8cd1.jpg",
+    "static/media/bubble.png": "/static/media/bubble.4089c6bd.png",
+    "static/media/champion.png": "/static/media/champion.b74fcb25.png",
+    "static/media/hero.png": "/static/media/hero.c7f4f270.png",
+    "static/media/loginImage.svg": "/static/media/loginImage.d39e5160.svg",
+    "static/media/logo.png": "/static/media/logo.4eef13ad.png",
+    "static/media/postjob.jpg": "/static/media/postjob.c65150db.jpg",
+    "static/media/signupImage.svg": "/static/media/signupImage.80d7e19d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.80f3d3e0.js",
+    "static/js/2.6fad25f8.chunk.js",
+    "static/css/main.6d72bb5c.chunk.css",
+    "static/js/main.91248981.chunk.js"
+  ]
+}
