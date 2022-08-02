@@ -4,12 +4,13 @@ import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import LoginImage from "../../images/loginImage.svg";
-import "./sign-in-up.css";
+import "./recruiter-sign-in-up.css";
 import Header from "../header/Header";
 import { useDispatch } from "react-redux";
 import { login } from "../../action";
+import Cookies from "js-cookie";
 
-export default function SignIn() {
+export default function RecruiterSignIn() {
   const [error, seterror] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,9 +22,9 @@ export default function SignIn() {
 
   const onSubmit = async (data) => {
     await axios
-      .post(`http://localhost:5000/user/login`, data, {
+      .post(`http://13.232.134.204:5000/recruiter/login`, data, {
         headers: {
-          "Content-Type": "application/json",
+          "x-access-token": "application/json",
         },
         withCredentials: true,
       })
@@ -31,31 +32,33 @@ export default function SignIn() {
         if (res.status === 200) {
           dispatch(
             login({
-              email: res.data.user.email,
-              id: res.data.user.id,
+              email: res.data.data.email,
+              id: res.data.data.id,
               isLoggedIn: true,
             })
           );
-          navigate("/");
+          Cookies.set("accessTokenRecruiter", res.data.data.token);
+          navigate("/dashboardrecruiter");
         } else {
           seterror(res.data.message);
         }
       })
       .catch((err) => {
-        seterror(err.response.data.message);
+        // seterror(err.response.data.message);
+        console.log(err);
       });
   };
 
   return (
-    <div className="sign-in">
+    <div className="recruiter-sign-in">
       <Header />
-      <div className="sign-in-left-container">
-        <div className="sign-in-left-wrapper">
-          <h2>Login</h2>
-          <p>Find the right fit for your passion</p>
-          <div className="google-sign-in">
+      <div className="recruiter-sign-in-left-container">
+        <div className="recruiter-sign-in-left-wrapper">
+          <h1>Login</h1>
+          <p>We Handpick The Best Among The Rest</p>
+          <div className="recruiter-google-sign-in">
             <Link to="">
-              <FcGoogle className="FcGoogle" /> Sign in with Google
+              <FcGoogle className="recruiter-FcGoogle" /> Sign in with Google
             </Link>
           </div>
           <h3>
@@ -63,11 +66,11 @@ export default function SignIn() {
           </h3>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="error-messages">{error}</div>
-            <label className="form-label">
+            <div className="recruiter-error-messages">{error}</div>
+            <label className="recruiter-form-label">
               Email<span>* </span>
             </label>
-            <span className="error-messages">
+            <span className="recruiter-error-messages">
               {errors.email && errors.email.type === "required" && (
                 <span>This field is required</span>
               )}
@@ -80,10 +83,10 @@ export default function SignIn() {
               placeholder="Enter your email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
-            <label className="form-label">
+            <label className="recruiter-form-label">
               Password<span>* </span>
             </label>
-            <span className="error-messages">
+            <span className="recruiter-error-messages">
               {errors.password && errors.password.type === "required" && (
                 <span>This field is required</span>
               )}
@@ -95,8 +98,8 @@ export default function SignIn() {
               {...register("password", { required: true })}
             />
             {/*errors.password && <span>This field is required</span>*/}
-            <div className="remember-forgot">
-              <label className="remember-me-checkbox">
+            <div className="recruiter-remember-forgot">
+              <label className="recruiter-remember-me-checkbox">
                 <input type="checkbox" />
                 Remember me
               </label>
@@ -104,14 +107,14 @@ export default function SignIn() {
             </div>
             <input id="login-submit" type="submit" value="Login" />
           </form>
-          <p className="not-registered">
+          <p className="recruiter-not-registered">
             Not registered yet?
-            <Link to="/signup"> Create an Account</Link>
+            <Link to="/recruitersignup"> Create an Account</Link>
           </p>
         </div>
       </div>
-      <div className="sign-in-right-container">
-        <div className="sign-in-right-wrapper">
+      <div className="recruiter-sign-in-right-container">
+        <div className="recruiter-sign-in-right-wrapper">
           <img src={LoginImage} alt="login-image" />
         </div>
       </div>

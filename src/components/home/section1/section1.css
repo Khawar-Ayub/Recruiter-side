@@ -7,9 +7,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
 }
 .section1-left-wrapper h1{
     color: rgb(43, 43, 105);
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 400%;
 }
 .section1-left-wrapper p{
     color:gray;
@@ -36,7 +40,7 @@
     flex-direction: column;
 }
 .section1-search-bar{
-    width: 95%;
+    width: 75%;
     position: relative;
 }
 .section1-search-bar a{

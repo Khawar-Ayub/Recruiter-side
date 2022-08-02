@@ -1,36 +1,38 @@
-.sign-in,
-.sign-up {
+.recruiter-sign-in{
   display: flex;
-  height: 100vh;
 }
-.sign-in-right-container {
+.recruiter-sign-up {
+  display: flex;
+  height: 140vh;
+}
+.recruiter-sign-in-right-container {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.sign-up-right-container {
+.recruiter-sign-up-right-container {
   width: 50%;
   margin-top: auto;
   margin-bottom: auto;
 }
-.sign-in-right-wrapper img,
-.sign-up-right-wrapper img {
+.recruiter-sign-in-right-wrapper img,
+.recruiter-sign-up-right-wrapper img {
   width: 100%;
 }
-.sign-in-left-container,
-.sign-up-left-container {
+.recruiter-sign-in-left-container,
+.recruiter-sign-up-left-container {
   width: 50%;
   padding: 0px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.error-messages {
+.recruiter-error-messages {
   color: red;
   font-size: 13px;
 }
-.success-message {
+.recruiter-success-message {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -40,14 +42,14 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 99999;
 }
-.success-message-container {
+.recruiter-success-message-container {
   width: 400px;
   height: 450px;
 }
-.success-message .success-message-top-wrapper div {
+.recruiter-success-message .recruiter-success-message-top-wrapper div {
   margin-top: 20px;
 }
-.success-message .success-message-top-wrapper {
+.recruiter-success-message .recruiter-success-message-top-wrapper {
   background-color: #2c6f8b;
   height: 60%;
   display: flex;
@@ -58,7 +60,7 @@
   font-weight: lighter;
 }
 
-.success-message .success-message-bottom-wrapper {
+.recruiter-success-message .recruiter-success-message-bottom-wrapper {
   height: 40%;
   display: flex;
   justify-content: center;
@@ -69,31 +71,31 @@
   color: gray;
   text-align: center;
 }
-.sign-in-left-wrapper {
+.recruiter-sign-in-left-wrapper {
   width: 490px;
   margin-top: 20px;
 }
-.sign-up-left-wrapper {
+.recruiter-sign-up-left-wrapper {
   width: 490px;
   margin-top: 60px;
 }
-.sign-in-left-wrapper p {
+.recruiter-sign-in-left-wrapper p {
   color: gray;
   font-size: 16px;
   font-weight: 500;
   margin: 15px 0px 40px 0px;
 }
-.sign-up-left-wrapper p {
+.recruiter-sign-up-left-wrapper p {
   color: gray;
   font-size: 16px;
   font-weight: 500;
   margin: 10px 0px 30px 0px;
 }
-.google-sign-in .FcGoogle {
+.recruiter-google-sign-in .recruiter-FcGoogle {
   font-size: 25px;
   margin-right: 10px;
 }
-.google-sign-in a {
+.recruiter-google-sign-in a {
   text-decoration: none;
   color: rgb(50, 50, 50);
   font-size: 16px;
@@ -106,7 +108,7 @@
   border: 1px solid lightgray;
   border-radius: 30px;
 }
-.sign-in-left-wrapper h3 {
+.recruiter-sign-in-left-wrapper h3 {
   width: 100%;
   text-align: center;
   border-bottom: 1px solid lightgray;
@@ -116,32 +118,36 @@
   font-weight: 500;
   color: lightgray;
 }
-.sign-up-left-wrapper h3 {
+.recruiter-sign-up-left-wrapper h3 {
   width: 100%;
   text-align: center;
   border-bottom: 1px solid lightgray;
-  line-height: 0.1em;
+  /* line-height: 0.1em; */
   margin: 30px 0 20px;
   font-size: 12px;
   font-weight: 500;
   color: lightgray;
 }
-.sign-in-left-wrapper h3 span,
-.sign-up-left-wrapper h3 span {
+.recruiter-sign-in-left-wrapper h3 span,
+.recruiter-sign-up-left-wrapper h3 span {
   background: #fff;
   padding: 0 10px;
 }
-.sign-in-left-wrapper .form-label,
-.sign-up-left-wrapper .form-label {
+.recruiter-sign-in-left-wrapper .recruiter-form-label,
+.recruiter-sign-up-left-wrapper .recruiter-form-label {
   font-size: 16px;
   font-weight: 500;
 }
-.sign-in-left-wrapper .form-label span,
-.sign-up-left-wrapper .form-label span {
+.recruiter-sign-in-left-wrapper .recruiter-form-label span,
+.recruiter-sign-up-left-wrapper .recruiter-form-label span {
   color: #4c859d;
 }
-.sign-in-left-wrapper #email,
-.sign-up-left-wrapper #email {
+.recruiter-sign-in-left-wrapper #email,
+.recruiter-sign-up-left-wrapper #email,
+.recruiter-sign-up-left-wrapper #companyName,
+.recruiter-sign-up-left-wrapper #companyDescription,
+.recruiter-sign-up-left-wrapper #totalEmployees,
+.recruiter-sign-up-left-wrapper #founded{
   width: 100%;
   outline: none;
   padding: 15px 20px;
@@ -150,8 +156,9 @@
   font-size: 15px;
   margin: 5px 0px 15px 0px;
 }
-.sign-in-left-wrapper #password,
-.sign-up-left-wrapper #password {
+.recruiter-sign-in-left-wrapper #password,
+.recruiter-sign-up-left-wrapper #password,
+.recruiter-sign-up-left-wrapper #confirmPassword {
   width: 100%;
   outline: none;
   padding: 15px 20px;
@@ -161,18 +168,9 @@
   box-sizing: border-box;
   margin: 5px 0px 15px 0px;
 }
-.sign-up-left-wrapper #confirm-password {
-  width: 100%;
-  outline: none;
-  padding: 15px 20px;
-  border-radius: 30px;
-  border: 1px solid lightgray;
-  font-size: 15px;
-  box-sizing: border-box;
-  margin: 5px 0px 15px 0px;
-}
-.sign-in-left-wrapper #login-submit,
-.sign-up-left-wrapper #signup-submit {
+
+.recruiter-sign-in-left-wrapper #login-submit,
+.recruiter-sign-up-left-wrapper #signup-submit {
   width: 100%;
   border: none;
   cursor: pointer;
@@ -183,66 +181,66 @@
   font-size: 16px;
   background: linear-gradient(to right, #3e9bc3, #4c859d);
 }
-.sign-in-left-wrapper #login-submit:hover,
-.sign-up-left-wrapper #signup-submit:hover {
+.recruiter-sign-in-left-wrapper #login-submit:hover,
+.recruiter-sign-up-left-wrapper #signup-submit:hover {
   background: linear-gradient(to right, #4c859d, #3e9bc3);
 }
 
-.remember-forgot a {
+.recruiter-remember-forgot a {
   float: right;
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   color: #2c6f8b;
 }
-.sign-in-left-wrapper .remember-me-checkbox,
-.sign-up-left-wrapper .terms-checkbox {
+.recruiter-sign-in-left-wrapper .recruiter-remember-me-checkbox,
+.recruiter-sign-up-left-wrapper .recruiter-terms-checkbox {
   font-size: 15px;
   font-weight: 500;
   float: left;
 }
-.sign-in-left-wrapper .remember-me-checkbox input,
-.sign-up-left-wrapper .terms-checkbox input {
+.recruiter-sign-in-left-wrapper .recruiter-remember-me-checkbox input,
+.recruiter-sign-up-left-wrapper .recruiter-terms-checkbox input {
   margin-right: 10px;
 }
 
-.sign-in-left-wrapper .not-registered,
-.sign-up-left-wrapper .already-registered {
+.recruiter-sign-in-left-wrapper .recruiter-not-registered,
+.recruiter-sign-up-left-wrapper .recruiter-already-registered {
   color: unset;
   margin: 15px 0px 10px 0px;
 }
-.sign-in-left-wrapper .not-registered a,
-.sign-up-left-wrapper .already-registered a {
+.recruiter-sign-in-left-wrapper .recruiter-not-registered a,
+.recruiter-sign-up-left-wrapper .recruiter-already-registered a {
   text-decoration: none;
   color: #2c6f8b;
 }
 
 @media only screen and (max-width: 1000px) {
-  .sign-in,
-  .sign-up {
+  .recruiter-sign-in,
+  .recruiter-sign-up {
     flex-direction: column;
   }
-  .sign-in-left-container,
-  .sign-up-left-container {
+  .recruiter-sign-in-left-container,
+  .recruiter-sign-up-left-container {
     width: 100%;
     margin-top: 70px;
     padding: 0px 20px;
   }
-  .sign-in-right-container,
-  .sign-up-right-container {
+  .recruiter-sign-in-right-container,
+  .recruiter-sign-up-right-container {
     width: 100%;
   }
-  .sign-up-left-wrapper {
+  .recruiter-sign-up-left-wrapper {
     margin-top: 20px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .success-message-container {
+  .recruiter-success-message-container {
     width: 340px;
     height: 360px;
   }
-  .success-message .success-message-bottom-wrapper {
+  .recruiter-success-message .recruiter-success-message-bottom-wrapper {
     height: 40%;
     font-size: 16px;
   }

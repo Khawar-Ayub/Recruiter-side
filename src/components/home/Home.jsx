@@ -9,7 +9,7 @@ export default function Home() {
         <div className="home">
             <Header/>
             <Section1/>
-            <Section2/>
+            {/* <Section2/> */}
         </div>
     )
 }

@@ -6,7 +6,7 @@ const initialStateValue = {
   isLoggedIn: false,
 };
 const userSlice = createSlice({
-  name: "user",
+  name: "recruiter",
   initialState: {
     value: initialStateValue,
   },

@@ -10,12 +10,12 @@ export default function Section1() {
             <div className="section1-left-container">
                 <div className="section1-left-box">
                     <div className="section1-left-wrapper">
-                        <h1>Your Passion Begins Here !</h1>
-                        <p>Join Millions Other in the Future of Work,<br/>
-                        The easiest way to get your new job.</p>
+                        <h1>Employment Problem? </h1>
+                        <h1>We Have The Solution !</h1>
+                        <p>Quality Recruitment At Your Service.</p>
                         <div className="section1-search-bar">
                             <input type="text" id="search" placeholder="Job Title, Keywords or Company" />
-                            <Link to="#">Search</Link>
+                            <Link to="/recruitersignup">Join Now</Link>
                         </div>
                     </div>
                 </div>

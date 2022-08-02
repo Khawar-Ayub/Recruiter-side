@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import Header from "../header/Header";
 import axios from "axios";
 import "./updateProfile.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../action";
+import NavSidebar from "../dashboard/nav-sidebar/NavSidebar";
 
 export default function UpdateProfile() {
   const [error, seterror] = useState();
@@ -23,7 +23,7 @@ export default function UpdateProfile() {
       seterror("Password and Confirm Password does not match");
     } else {
       await axios
-        .patch(`http://localhost:5000/user/edituser`, data, {
+        .patch(`http://localhost:5000/recruiter/updateRecruiter`, data, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -44,10 +44,10 @@ export default function UpdateProfile() {
     }
   };
   return (
-    <div className="user-update-profile">
-      <Header />
-      <div className="user-update-profile-container">
-        <div className="user-update-profile-form">
+    <div className="recruiter-update-profile">
+      <NavSidebar/>
+      <div className="recruiter-update-profile-container">
+        <div className="recruiter-update-profile-form">
           <h1>Update Profile</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="error-messages">{error}</div>
@@ -102,11 +102,68 @@ export default function UpdateProfile() {
                 )}
             </span>
             <input
-              id="confirm-password"
+              id="confirmPassword"
               type={"password"}
               placeholder="Re-enter password"
               {...register("confirmPassword", { required: true, minLength: 8 })}
             />
+            <label className="form-label">
+              Company Name<span>* </span>
+            </label>
+            <span className="error-messages">
+              {errors.companyName && errors.companyName.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="companyName"
+              placeholder="Enter your company name"
+              {...register("companyName", { required: true})}
+            />
+
+            <label className="form-label">
+              Company Description<span>* </span>
+            </label>
+            <span className="error-messages">
+              {errors.companyDescription && errors.companyDescription.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="companyDescription"
+              placeholder="Enter your company Description"
+              {...register("companyDescription", { required: true})}
+            />
+
+            <label className="form-label">
+              Total Employees<span>* </span>
+            </label>
+            <span className="error-messages">
+              {errors.totalEmployees && errors.totalEmployees.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="totalEmployees"
+              type="number"
+              placeholder="Enter total number of employees"
+              {...register("totalEmployees", { required: true})}
+            />  
+
+            <label className="form-label">
+              Company Creation Date<span>* </span>
+            </label>
+            <span className="error-messages">
+              {errors.founded && errors.founded.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="founded"
+              type="date"
+              placeholder="Enter company's creation date"
+              {...register("founded", { required: true})}
+            />  
             <input id="update-submit" type="submit" value="Update" />
           </form>
         </div>

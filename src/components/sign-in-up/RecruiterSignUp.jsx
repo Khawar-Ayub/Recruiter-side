@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { BsCheckCircle } from "react-icons/bs";
 import axios from "axios";
 import SignupImage from "../../images/signupImage.svg";
-import "./sign-in-up.css";
+import "./recruiter-sign-in-up.css";
 import Header from "../header/Header";
 
-export default function SignUp() {
+export default function RecruiterSignUp() {
   var [error, seterror] = useState();
   var [message, setmessage] = useState();
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function SignUp() {
       seterror("Password and Confirm Password does not match");
     } else {
       await axios
-        .post(`http://localhost:5000/user/register`, data)
+        .post(`http://13.232.134.204:5000/recruiter/register`, data)
         .then((res) => {
           if (res.status === 201) {
             setmessage(res.data.message);
@@ -40,35 +40,35 @@ export default function SignUp() {
   useEffect(() => {
     if (message) {
       const timer = setTimeout(() => {
-        navigate("/signin");
+        navigate("/recruitersignin");
       }, 4000);
       return () => clearTimeout(timer);
     }
   }, [message]);
 
   return (
-    <div className="sign-up">
+    <div className="recruiter-sign-up">
       <Header/>
       {message && (
-        <div className="success-message">
-          <div className="success-message-container">
-            <div className="success-message-top-wrapper">
+        <div className="recruiter-success-message">
+          <div className="recruiter-success-message-container">
+            <div className="recruiter-success-message-top-wrapper">
             <BsCheckCircle size={80} />
               <div>SUCCESS</div>
             </div>
-            <div className="success-message-bottom-wrapper">
+            <div className="recruiter-success-message-bottom-wrapper">
             {message}
             </div>
           </div>
         </div>
       )}
-      <div className="sign-up-left-container">
-        <div className="sign-up-left-wrapper">
-          <h2>Sign Up</h2>
-          <p>Find the right fit for your passion</p>
-          <div className="google-sign-in">
+      <div className="recruiter-sign-up-left-container">
+        <div className="recruiter-sign-up-left-wrapper">
+          <h1>Sign Up</h1>
+          <p>Join And Grow Old With Us</p>
+          <div className="recruiter-google-sign-in">
             <Link to="">
-              <FcGoogle className="FcGoogle" /> Sign in with Google
+              <FcGoogle className="recruiter-FcGoogle" /> Sign in with Google
             </Link>
           </div>
           <h3>
@@ -76,11 +76,11 @@ export default function SignUp() {
           </h3>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="error-messages">{error}</div>
-            <label className="form-label">
+            <div className="recruiter-error-messages">{error}</div>
+            <label className="recruiter-form-label">
               Email<span>* </span>
             </label>
-            <span className="error-messages">
+            <span className="recruiter-error-messages">
               {errors.email && errors.email.type === "required" && (
                 <span>This field is required</span>
               )}
@@ -93,10 +93,10 @@ export default function SignUp() {
               placeholder="Enter your email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
-            <label className="form-label">
+            <label className="recruiter-form-label">
               Password<span>* </span>
             </label>
-            <span className="error-messages">
+            <span className="recruiter-error-messages">
               {errors.password && errors.password.type === "required" && (
                 <span>This field is required</span>
               )}
@@ -112,10 +112,10 @@ export default function SignUp() {
               placeholder="Enter new password"
               {...register("password", { required: true, minLength: 8 })}
             />
-            <label className="form-label">
+            <label className="recruiter-form-label">
               Confirm Password<span>* </span>
             </label>
-            <span className="error-messages">
+            <span className="recruiter-error-messages">
               {errors.confirmPassword &&
                 errors.confirmPassword.type === "required" && (
                   <span>This field is required</span>
@@ -128,27 +128,87 @@ export default function SignUp() {
                 )}
             </span>
             <input
-              id="confirm-password"
+              id="confirmPassword"
               type={"password"}
               placeholder="Re-enter password"
               {...register("confirmPassword", { required: true, minLength: 8 })}
             />
-            <div className="terms">
-              <label className="terms-checkbox">
+            {/*  */}
+            
+            <label className="recruiter-form-label">
+              Company Name<span>* </span>
+            </label>
+            <span className="recruiter-error-messages">
+              {errors.companyName && errors.companyName.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="companyName"
+              placeholder="Enter your company name"
+              {...register("companyName", { required: true})}
+            />
+
+            <label className="recruiter-form-label">
+              Company Description<span>* </span>
+            </label>
+            <span className="recruiter-error-messages">
+              {errors.companyDescription && errors.companyDescription.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="companyDescription"
+              placeholder="Enter your company Description"
+              {...register("companyDescription", { required: true})}
+            />
+
+            <label className="recruiter-form-label">
+              Total Employees<span>* </span>
+            </label>
+            <span className="recruiter-error-messages">
+              {errors.totalEmployees && errors.totalEmployees.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="totalEmployees"
+              type="number"
+              placeholder="Enter total number of employees"
+              {...register("totalEmployees", { required: true})}
+            />  
+
+            <label className="recruiter-form-label">
+              Company Creation Date<span>* </span>
+            </label>
+            <span className="recruiter-error-messages">
+              {errors.founded && errors.founded.type === "required" && (
+                <span>This field is required</span>
+              )}
+            </span>
+            <input
+              id="founded"
+              type="date"
+              placeholder="Enter company's creation date"
+              {...register("founded", { required: true})}
+            />  
+
+            <div className="recruiter-terms">
+              <label className="recruiter-terms-checkbox">
                 <input type="checkbox" />I agree to the Terms & Conditions
               </label>
             </div>
             <input id="signup-submit" type="submit" value="Sign Up" />
           </form>
 
-          <p className="already-registered">
+          <p className="recruiter-already-registered">
             Already have an Account?
             <Link to="/signin"> Sign in</Link>
           </p>
         </div>
       </div>
-      <div className="sign-up-right-container">
-        <div className="sign-up-right-wrapper">
+      <div className="recruiter-sign-up-right-container">
+        <div className="recruiter-sign-up-right-wrapper">
           <img src={SignupImage} alt="signup" />
         </div>
       </div>

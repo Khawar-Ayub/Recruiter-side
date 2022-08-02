@@ -19,7 +19,8 @@ export default function Header(props) {
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setHeader("header2") : setHeader("header");
   };
-  const user = useSelector((state) => state.user.value);
+  const recruiter = 1;    //// Problem here
+  // = useSelector((state) => state.recruiter.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,14 +29,15 @@ export default function Header(props) {
     if (props.whiteColor === true) {
       setHeader("header2");
     }
+    authRecruiter();
     return () => window.removeEventListener("scroll", listenScrollEvent);
   }, []);
 
   const handleLogout = async () => {
     const response = await axios
-      .get(`http://localhost:5000/user/logout`, {
+      .get(`http://13.232.134.204:5000/recruiter/logout`, {
         headers: {
-          "Content-Type": "application/json",
+          "x-access-token": "application/json",
         },
         withCredentials: true,
       })
@@ -49,11 +51,33 @@ export default function Header(props) {
         }
       })
       .catch((err) => {
-        console.log("err", err);
-        seterror(err);
+        console.log("err", err.response.data.message);
+        // seterror(err.response.data.message);
       });
   };
 
+  const authRecruiterAPICall = async () => {
+    const response = await axios.get("http://localhost:5000/recruiter/authRecruiter", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
+    return await response;
+  };
+  const authRecruiter = () => {
+    authRecruiterAPICall()
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch(login({ email: res.data.email, isLoggedIn: true }));
+        } else {
+          console.log("error");
+        }
+      })
+      .catch((err) => {
+        // console.log("err", err.response.data.message);
+      });
+  };
   return (
     <div className={header}>
       <div className="header-left-container">
@@ -65,20 +89,17 @@ export default function Header(props) {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/jobs">Jobs</Link>
-            </li>
-            <li>
-              <Link to="/chat">chat</Link>
-            </li>
-            {user.isLoggedIn ? (
+            </li> */}
+            {recruiter.isLoggedIn ? (
               <div className="header-loggedin">
                 <div
                   className="header-loggedin-wrapper"
                   onClick={() => setdropdown(!dropdown)}
                 >
                   <Avatar
-                    name={user.email}
+                    name={recruiter.email}
                     color="var(--button)"
                     maxInitials={2}
                     round={true}
@@ -91,19 +112,18 @@ export default function Header(props) {
                   />
                 </div>
                 <ul id={dropdown ? "header-dropdown" : ""}>
-                  <li>
-                    <Link to="/updateProfile">Update Profile</Link>
-                  </li>
+                  <li>Update Profile</li>
                   <li onClick={handleLogout}>Logout</li>
                 </ul>
               </div>
             ) : (
               <>
                 <li>
-                  <Link to="/signup">Join Now</Link>
+                  <Link to="/recruitersignup">Join Now</Link>
                 </li>
+
                 <li>
-                  <Link to="/signin" className="signin-button">
+                  <Link to="/recruitersignin" className="signin-button">
                     Sign In
                   </Link>
                 </li>
